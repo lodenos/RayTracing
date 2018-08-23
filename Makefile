@@ -11,11 +11,14 @@ NAME = raytracing
 OBJ = $(sort $(addsuffix .o, $(basename $(SRC))))
 
 SRC = \
-	./src/main.c \
+	./src/camera.c \
 	./src/command_argument.c \
 	./src/detect_device_gpu.c \
 	./src/event_capture.c \
-	./src/launcher_main_window.c
+	./src/intersection_point.c \
+	./src/launcher_main_window.c \
+	./src/main.c \
+	./src/main_loop.c
 
 all: $(NAME)
 

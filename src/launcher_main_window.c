@@ -1,15 +1,16 @@
 #include "raytracing.h"
 
-int32_t launcher_main_window(void) {
-  window_t win;
-  win.title = strdup("RayTracing");
-  win.position.x = SDL_WINDOWPOS_CENTERED;
-  win.position.y = SDL_WINDOWPOS_CENTERED;
-  win.height = 150;
-  win.width = 300;
-  win.window = SDL_CreateWindow(win.title, win.position.x, win.position.y,
-                                win.width, win.height, win.flags);
-  if (win.window == NULL)
+int32_t launcher_main_window(window_t *window) {
+  window->flags = SDL_WINDOW_RESIZABLE;
+  window->title = strdup("RayTracing");
+  window->position.x = SDL_WINDOWPOS_CENTERED;
+  window->position.y = SDL_WINDOWPOS_CENTERED;
+  window->height = 540;
+  window->width = 960;
+  window->window =
+      SDL_CreateWindow(window->title, window->position.x, window->position.y,
+                       window->width, window->height, window->flags);
+  if (window->window == NULL)
     return -1;
   return 0;
 }
