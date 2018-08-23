@@ -14,6 +14,7 @@ SRC = \
 	./src/main.c \
 	./src/command_argument.c \
 	./src/detect_device_gpu.c \
+	./src/event_capture.c \
 	./src/launcher_main_window.c
 
 all: $(NAME)

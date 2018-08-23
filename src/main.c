@@ -7,8 +7,12 @@ int main(int argc, char **argv, char **envp) {
     return -1;
   if (SDL_Init(SDL_INIT_EVERYTHING))
     return -1;
+  if (launcher_main_window() == -1)
+    return -1;
+  if (event_capture() == -1)
+    return -1;
 
-  launcher_main_window();
+  sleep(1000);
 
   SDL_Quit();
   return 0;

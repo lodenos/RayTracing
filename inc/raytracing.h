@@ -3,6 +3,7 @@
 
 #include <CL/cl.h>
 #include <SDL2/SDL.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <unistd.h>
 
@@ -23,6 +24,7 @@ struct _window {
 
 int command_argument(int argc, char **argv, char **envp);
 int32_t detect_device_gpu(void);
+int32_t event_capture(void);
 int32_t launcher_main_window(void);
 
 #endif
