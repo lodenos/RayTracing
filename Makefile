@@ -4,18 +4,22 @@ FLAGS = -std=gnu17 -Wall -Werror -Wextra -Wpedantic -Weverything
 
 INCLUDE = -I ./inc
 
+LINKER = -lOpenCL
+
 NAME = raytracing
 
 OBJ = $(sort $(addsuffix .o, $(basename $(SRC))))
 
 SRC = \
 	./src/main.c \
-	./src/command_argument.c
+	./src/command_argument.c \
+	./src/detect_device_gpu.c
+
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
+	$(CC) $(OBJ) $(LINKER) -o $(NAME)
 
 $(OBJ): %.o: %.c
 	$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
