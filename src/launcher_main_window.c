@@ -12,5 +12,15 @@ int32_t launcher_main_window(window_t *window) {
                        window->width, window->height, window->flags);
   if (window->window == NULL)
     return -1;
+  window->renderer =
+      SDL_CreateRenderer(window->window, -1, SDL_RENDERER_PRESENTVSYNC);
+  window->buffer = SDL_CreateTexture(window->renderer, SDL_PIXELFORMAT_RGBA8888,
+                                     SDL_TEXTUREACCESS_STREAMING, window->width,
+                                     window->height);
+  SDL_LockTexture(window->buffer, NULL, (void *)&window->pixelsData,
+                  &window->pitch);
+  bzero(window->pixelsData,
+        sizeof(uint32_t) * (uint32_t)window->width * (uint32_t)window->height);
+  SDL_RenderPresent(window->renderer);
   return 0;
 }

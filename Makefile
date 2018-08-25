@@ -18,7 +18,9 @@ SRC = \
 	./src/intersection_point.c \
 	./src/launcher_main_window.c \
 	./src/main.c \
-	./src/main_loop.c
+	./src/main_loop.c \
+	./src/pixel_HDR_sRGB.c \
+	./src/ray_tracing.c
 
 all: $(NAME)
 
