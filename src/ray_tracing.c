@@ -1,8 +1,8 @@
 #include "raytracing.h"
 
 colorHDR_t ray_tracing(scene_t *scene, uint32_t index) {
-  colorHDR_t color = {0x00FF, 0x0FFF, 0xFFFF, 0xFFFF};
-  float length;
+  colorHDR_t color = {0};
+  float length = 0.0f;
   float smallest = FLT_MAX;
   for (uint32_t itr = 0; itr < scene->numObject; ++itr) {
     length = intersection_point(&scene->object[itr], &scene->view.origin,
@@ -10,5 +10,11 @@ colorHDR_t ray_tracing(scene_t *scene, uint32_t index) {
     if (length < smallest)
       smallest = length;
   }
+
+  printf("%.6f\n", (double)length);
+
+  if (length > 0.0f)
+    return (colorHDR_t){0xFFFF, 0x00, 0x00, 0xFFFF};
+
   return color;
 }

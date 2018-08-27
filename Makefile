@@ -4,7 +4,7 @@ FLAGS = -std=gnu17 -Wall -Werror -Wextra -Wpedantic -Weverything
 
 INCLUDE = -I ./inc
 
-LINKER = -lOpenCL -lSDL2
+LINKER = -lOpenCL -lSDL2 -lm
 
 NAME = raytracing
 
@@ -14,13 +14,16 @@ SRC = \
 	./src/camera.c \
 	./src/command_argument.c \
 	./src/detect_device_gpu.c \
+	./src/dot.c \
 	./src/event_capture.c \
 	./src/intersection_point.c \
 	./src/launcher_main_window.c \
 	./src/main.c \
 	./src/main_loop.c \
 	./src/pixel_HDR_sRGB.c \
-	./src/ray_tracing.c
+	./src/ray_tracing.c \
+	./src/sphere.c \
+	./src/sub.c
 
 all: $(NAME)
 

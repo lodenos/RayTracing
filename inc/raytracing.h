@@ -8,6 +8,8 @@
 #include <string.h>
 #include <unistd.h>
 
+#define SPHERE 0
+
 typedef struct _env env_t;
 typedef struct _colorHDR colorHDR_t;
 typedef struct _object object_t;
@@ -77,5 +79,9 @@ int32_t launcher_main_window(window_t *window);
 void main_loop(env_t *env);
 uint32_t pixel_HDR_sRGB(colorHDR_t *pixel) __attribute__((always_inline));
 colorHDR_t ray_tracing(scene_t *scene, uint32_t index);
+float sphere(object_t *object, cl_float4 *origin, cl_float4 *direction);
+
+cl_float4 sub(cl_float4 *a, cl_float4 *b);
+float dot(cl_float4 *a, cl_float4 *b);
 
 #endif
