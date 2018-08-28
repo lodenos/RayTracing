@@ -11,19 +11,22 @@ NAME = raytracing
 OBJ = $(sort $(addsuffix .o, $(basename $(SRC))))
 
 SRC = \
-	./src/camera.c \
-	./src/command_argument.c \
-	./src/detect_device_gpu.c \
-	./src/dot.c \
-	./src/event_capture.c \
-	./src/intersection_point.c \
-	./src/launcher_main_window.c \
-	./src/main.c \
 	./src/main_loop.c \
-	./src/pixel_HDR_sRGB.c \
+	./src/main.c \
 	./src/ray_tracing.c \
-	./src/sphere.c \
-	./src/sub.c
+	./src/device/detect_device_gpu.c \
+	./src/event/event_capture.c \
+	./src/parser/command_argument.c \
+	./src/parser/load_file_ort.c \
+	./src/primitive/intersection.c \
+	./src/primitive/sphere.c \
+	./src/vector/add.c \
+	./src/vector/dot.c \
+	./src/vector/normalize.c \
+	./src/vector/sub.c \
+	./src/video/camera.c \
+	./src/video/launcher_main_window.c \
+	./src/video/pixel_HDR_sRGB.c
 
 all: $(NAME)
 

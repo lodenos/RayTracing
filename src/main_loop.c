@@ -6,7 +6,7 @@ static void just_init_local(env_t *env) {
   env->scene->numObject = 1;
   env->scene->object = (object_t *)malloc(sizeof(object_t));
 
-  env->scene->object->position = (cl_float4){{0.0f, 0.0f, 0.0f, 0.0f}};
+  env->scene->object->position = (cl_float4){{0.0f, 0.0f, 500.0f, 0.0f}};
   env->scene->object->radius = 100;
   env->scene->object->type = SPHERE;
 
