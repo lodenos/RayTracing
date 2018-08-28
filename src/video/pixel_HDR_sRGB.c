@@ -1,4 +1,4 @@
-#include "raytracing.h"
+#include "video.h"
 
 uint32_t pixel_HDR_sRGB(colorHDR_t *pixel) {
   return (uint32_t)(pixel->red + 1 / 0xF00) << 24 |

@@ -1,4 +1,4 @@
-#include "raytracing.h"
+#include "device.h"
 
 int32_t detect_device_gpu(void) {
   cl_uint num_platforms = 0;

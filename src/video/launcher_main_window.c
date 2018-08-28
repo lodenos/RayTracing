@@ -1,4 +1,4 @@
-#include "raytracing.h"
+#include "video.h"
 
 int32_t launcher_main_window(window_t *window) {
   window->flags = SDL_WINDOW_RESIZABLE;

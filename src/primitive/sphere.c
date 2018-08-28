@@ -1,4 +1,4 @@
-#include "raytracing.h"
+#include "primitive.h"
 
 float sphere(object_t *object, cl_float4 *origin, cl_float4 *direction) {
   register float b;

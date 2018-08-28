@@ -1,4 +1,4 @@
-#include "raytracing.h"
+#include "video.h"
 
 void camera(view_t *view) {
   for (uint32_t x = 0; x < view->height; ++x)

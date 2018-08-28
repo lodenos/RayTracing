@@ -1,4 +1,4 @@
-#include "raytracing.h"
+#include "vector.h"
 
 cl_float4 normalize(cl_float4 *vector) {
   register float value;
