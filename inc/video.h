@@ -1,6 +1,7 @@
 #ifndef VIDEO_H
 #define VIDEO_H
 
+#include "vector.h"
 #include <CL/cl.h>
 #include <SDL2/SDL.h>
 
@@ -43,6 +44,7 @@ struct _window {
 #pragma pack(pop)
 
 void camera(view_t *view);
+int32_t launcher_main_window(window_t *window);
 uint32_t pixel_HDR_sRGB(colorHDR_t *pixel) __attribute__((always_inline));
 
 #endif

@@ -5,17 +5,27 @@ static void just_init_local(env_t *env) {
   env->scene = (scene_t *)malloc(sizeof(scene_t));
   env->scene->numObject = 1;
   env->scene->object = (object_t *)malloc(sizeof(object_t));
-
-  env->scene->object->position = (cl_float4){{0.0f, 0.0f, 500.0f, 0.0f}};
-  env->scene->object->radius = 100;
+  env->scene->object->position = (cl_float4){{0.0f, 0.0f, 1000.0f, 0.0f}};
+  env->scene->object->radius = 50;
+  env->scene->object->radius2 =
+      env->scene->object->radius * env->scene->object->radius;
   env->scene->object->type = SPHERE;
-
   env->scene->view.origin = (cl_float4){{0.0f, 0.0f, 0.0f, 0.0f}};
   env->scene->view.direction = (cl_float4){{0.0f, 0.0f, 1.0f, 0.0f}};
-
-  env->scene->view.size = 540 * 960;
+  env->scene->view.height = 540;
+  env->scene->view.width = 960;
+  env->scene->view.size = env->scene->view.height * env->scene->view.width;
   env->scene->view.projection =
       (cl_float4 *)malloc(sizeof(cl_float4) * env->scene->view.size);
+  env->scene->object->relativePosition =
+      sub(&env->scene->view.origin, &env->scene->object->position);
+  env->scene->object->distanceCamera2 =
+      dot(&env->scene->object->relativePosition,
+          &env->scene->object->relativePosition);
+  env->scene->object->distanceCamera =
+      sqrtf(env->scene->object->distanceCamera2);
+  env->scene->object->optimize =
+      env->scene->object->distanceCamera2 - env->scene->object->radius2;
 }
 
 void main_loop(env_t *env) {
@@ -31,9 +41,13 @@ void main_loop(env_t *env) {
     for (uint32_t index = 0; index != env->scene->view.size; ++index) {
       pixel = ray_tracing(env->scene, index);
       env->window.pixelsData[index] = pixel_HDR_sRGB(&pixel);
+      // env->window.pixelsData[index] = pixel_HDR_sRGB(&(colorHDR_t){
+      //     (uint16_t)(fabsf(env->scene->view.projection[index].x) * 255), 0,
+      //     (uint16_t)(fabsf(env->scene->view.projection[index].y) * 255), 0});
     }
     SDL_UnlockTexture(env->window.buffer);
     SDL_RenderCopy(env->window.renderer, env->window.buffer, NULL, NULL);
     SDL_RenderPresent(env->window.renderer);
+    printf("Update Frame\n");
   }
 }
