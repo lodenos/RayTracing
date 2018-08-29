@@ -3,9 +3,12 @@
 static void just_init_local(env_t *env) {
   env->numScene = 1;
   env->scene = (scene_t *)malloc(sizeof(scene_t));
+  env->scene->light = (light_t *)malloc(sizeof(scene_t));
+  env->scene->light->position = (cl_float4){{-200.0f, 0.0f, 0.0f, 0.0f}};
   env->scene->numObject = 1;
+  env->scene->numLight = 1;
   env->scene->object = (object_t *)malloc(sizeof(object_t));
-  env->scene->object->position = (cl_float4){{0.0f, 0.0f, 1000.0f, 0.0f}};
+  env->scene->object->position = (cl_float4){{0.0f, 0.0f, 200.0f, 0.0f}};
   env->scene->object->radius = 50;
   env->scene->object->radius2 =
       env->scene->object->radius * env->scene->object->radius;
@@ -26,6 +29,7 @@ static void just_init_local(env_t *env) {
       sqrtf(env->scene->object->distanceCamera2);
   env->scene->object->optimize =
       env->scene->object->distanceCamera2 - env->scene->object->radius2;
+  env->scene->object->color = (colorHDR_t){0xFF, 0x00, 0x00, 0x00};
 }
 
 void main_loop(env_t *env) {
@@ -48,6 +52,5 @@ void main_loop(env_t *env) {
     SDL_UnlockTexture(env->window.buffer);
     SDL_RenderCopy(env->window.renderer, env->window.buffer, NULL, NULL);
     SDL_RenderPresent(env->window.renderer);
-    printf("Update Frame\n");
   }
 }

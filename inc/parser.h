@@ -2,6 +2,7 @@
 #define PARSER_H
 
 #include "primitive.h"
+#include "shader.h"
 #include "video.h"
 
 typedef struct _env env_t;
@@ -16,7 +17,9 @@ struct _env {
 };
 
 struct _scene {
+  light_t *light;
   object_t *object;
+  uint32_t numLight;
   uint32_t numObject;
   view_t view;
 };

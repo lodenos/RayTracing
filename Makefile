@@ -20,8 +20,10 @@ SRC = \
 	./src/parser/load_file_ort.c \
 	./src/primitive/intersection.c \
 	./src/primitive/sphere.c \
+	./src/shader/flat_shading.c \
 	./src/vector/add.c \
 	./src/vector/dot.c \
+	./src/vector/intersection_point.c \
 	./src/vector/normalize.c \
 	./src/vector/sub.c \
 	./src/video/camera.c \

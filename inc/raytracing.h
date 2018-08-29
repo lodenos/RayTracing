@@ -5,6 +5,7 @@
 #include "event.h"
 #include "parser.h"
 #include "primitive.h"
+#include "shader.h"
 #include "vector.h"
 #include "video.h"
 
