@@ -6,6 +6,7 @@
 #include "video.h"
 
 typedef struct _env env_t;
+typedef struct _light light_t;
 typedef struct _scene scene_t;
 
 #pragma pack(push, 4)

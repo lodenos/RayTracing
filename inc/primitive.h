@@ -13,22 +13,23 @@ typedef struct _object object_t;
 
 struct _object {
   colorHDR_t color;
-  float distanceCamera;
-  float distanceCamera2;
-  float optimize;
   float radius;
   float radius2;
   uint32_t type;
-
-  cl_float4 relativePosition;
   cl_float4 position;
 };
 
 #pragma pack(pop)
 
-float intersection(object_t *object, cl_float4 *direction);
-float sphere(object_t *object, cl_float4 *direction);
+float intersection(object_t const *const restrict object,
+                   cl_float4 const *const restrict origin,
+                   cl_float4 const *const restrict direction);
+float sphere(object_t const *const restrict object,
+             cl_float4 const *const restrict origin,
+             cl_float4 const *const restrict direction);
 
-static float (*fnObject[])(object_t *object, cl_float4 *direction) = {sphere};
+static float (*fobject[])(object_t const *const restrict object,
+                          cl_float4 const *const restrict origin,
+                          cl_float4 const *const restrict direction) = {sphere};
 
 #endif

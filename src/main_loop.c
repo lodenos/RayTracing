@@ -4,7 +4,7 @@ static void just_init_local(env_t *env) {
   env->numScene = 1;
   env->scene = (scene_t *)malloc(sizeof(scene_t));
   env->scene->light = (light_t *)malloc(sizeof(scene_t));
-  env->scene->light->position = (cl_float4){{-200.0f, 0.0f, 0.0f, 0.0f}};
+  env->scene->light->position = (cl_float4){{-250.0f, 0.0f, 0.0f, 0.0f}};
   env->scene->numObject = 1;
   env->scene->numLight = 1;
   env->scene->object = (object_t *)malloc(sizeof(object_t));
@@ -20,15 +20,6 @@ static void just_init_local(env_t *env) {
   env->scene->view.size = env->scene->view.height * env->scene->view.width;
   env->scene->view.projection =
       (cl_float4 *)malloc(sizeof(cl_float4) * env->scene->view.size);
-  env->scene->object->relativePosition =
-      sub(&env->scene->view.origin, &env->scene->object->position);
-  env->scene->object->distanceCamera2 =
-      dot(&env->scene->object->relativePosition,
-          &env->scene->object->relativePosition);
-  env->scene->object->distanceCamera =
-      sqrtf(env->scene->object->distanceCamera2);
-  env->scene->object->optimize =
-      env->scene->object->distanceCamera2 - env->scene->object->radius2;
   env->scene->object->color = (colorHDR_t){0xFF, 0x00, 0x00, 0x00};
 }
 

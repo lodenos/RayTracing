@@ -21,6 +21,7 @@ SRC = \
 	./src/primitive/intersection.c \
 	./src/primitive/sphere.c \
 	./src/shader/flat_shading.c \
+	./src/shader/shadow_mapping.c \
 	./src/vector/add.c \
 	./src/vector/dot.c \
 	./src/vector/intersection_point.c \
