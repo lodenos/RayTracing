@@ -24,7 +24,7 @@ SRC = \
 	./src/shader/shadow_mapping.c \
 	./src/vector/add.c \
 	./src/vector/dot.c \
-	./src/vector/intersection_point.c \
+	./src/vector/intersection_position.c \
 	./src/vector/normalize.c \
 	./src/vector/sub.c \
 	./src/video/camera.c \
